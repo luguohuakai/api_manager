@@ -220,6 +220,11 @@ function DeleteCookie(name) {
                         <select class="form-control" name="type">
                             <option value="POST">POST</option>
                             <option value="GET">GET</option>
+                            <option value="DELETE">DELETE</option>
+                            <option value="PUT">PUT</option>
+                            <option value="HEAD">HEAD</option>
+                            <option value="PATCH">PATCH</option>
+                            <option value="OPTIONS">OPTIONS</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -328,12 +333,13 @@ function DeleteCookie(name) {
                     </div>
                     <div class="form-group" required="required">
                         <select class="form-control" name="type">
-                            <?php
-                                $selected[0] = ($info['type'] == 'GET') ? 'selected' : '';
-                                $selected[1] = ($info['type'] == 'POST') ? 'selected' : '';
-                            ?>
-                            <option value="POST" <?php echo $selected[1]?>>POST</option>
-                            <option value="GET"  <?php echo $selected[0]?>>GET</option>
+                            <option value="POST" <?=$info['type'] == 'POST' ? 'selected' : ''?>>POST</option>
+                            <option value="GET" <?=$info['type'] == 'GET' ? 'selected' : ''?>>GET</option>
+                            <option value="DELETE" <?=$info['type'] == 'DELETE' ? 'selected' : ''?>>DELETE</option>
+                            <option value="PUT" <?=$info['type'] == 'PUT' ? 'selected' : ''?>>PUT</option>
+                            <option value="HEAD" <?=$info['type'] == 'HEAD' ? 'selected' : ''?>>HEAD</option>
+                            <option value="PATCH" <?=$info['type'] == 'PATCH' ? 'selected' : ''?>>PATCH</option>
+                            <option value="OPTIONS" <?=$info['type'] == 'OPTIONS' ? 'selected' : ''?>>OPTIONS</option>
                         </select>
                     </div>
                     <div class="form-group">
