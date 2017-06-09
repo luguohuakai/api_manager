@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>【SDK】API文档</title>
+    <title>【SP云】API文档</title>
     <link rel="icon" type="image/x-icon" href="./MinPHP/res/favicon.ico">
     <link href="./MinPHP/res/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./MinPHP/res/style.css" rel="stylesheet">
@@ -22,7 +22,7 @@
             <div style="height:50px;font-size:30px;line-height:50px;">
                 <a class="home" style="color:#000000;text-shadow:1px 0px 1px #666;text-decoration: none" href="<?php echo U()?>">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true" style="width:40px;"></span>
-        <span style="position: relative;top:-3px;">【SDK】API文档<span style="font-size:12px;position:relative;top:-13px;">&nbsp;<?php echo C('version->no')?></span>
+        <span style="position: relative;top:-3px;">【SP云】API文档<span style="font-size:12px;position:relative;top:-13px;">&nbsp;<?php echo C('version->no')?></span>
                 </a>
                 </span>
             </div>
