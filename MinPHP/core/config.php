@@ -6,7 +6,7 @@ return array(
         'host' => 'localhost',   //数据库地址
         'dbname' => 'api',   //数据库名
         'user' => 'root',    //帐号
-        'passwd' => '',    //密码
+        'passwd' => 'srun_3000',    //密码
         'linktype' => 'pdo',    //数据库连接类型 支持mysqli与pdo两种类型
     ),
     //session配置

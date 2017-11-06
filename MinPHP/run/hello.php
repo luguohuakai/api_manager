@@ -6,8 +6,8 @@
 <!--info start-->
 <div style="font-size:18px;">
     <div class="info" style="font-size:14px;">
-        <span style="font-size:30px;" class="glyphicon glyphicon-grain" aria-hidden="true"></span> <span style="font-size:16px;">【SP云】接口<span style="font-size:12px;position:relative;top:-7px;"> v1</span></span><br>
-        <pre class="info" style="margin:10px 34px 10px 34px">
+        <span style="font-size:30px;" class="glyphicon glyphicon-grain" aria-hidden="true"></span> <span style="font-size:16px;">【SRUNBOX】接口<span style="font-size:12px;position:relative;top:-7px;"> v1</span></span><br>
+        <pre class="info" style="margin:10px 34px 10px 34px;display: none">
 关于
 。。。。。。
     密！！！！
@@ -27,6 +27,15 @@
         <span class="label label-default">
             time = base/get-server-time
         </span>
+        </pre>
+        <pre class="info" style="margin:10px 34px 10px 34px;">
+    [代码规范]
+    PSR-1 PSR-2 PSR-4
+
+    [数据库规范]
+    标准版(dev分支) 基础库(srun.sql) 更新库(srun_update.sql) 基础数据(srun_data.sql) 更新库基础数据(srun_update_data.sql)
+    每个具体项目禁止更改基础库和更新库 均使用 "英文或拼音项目名.sql" 形式保存于 "/srun3/www/srun4-mgr/db/" 目录下
+    如:Tsinghua.sql Tsinghua_update.sql Tsinghua_data.sql Tsinghua_update_data.sql
         </pre>
     </div>
     <div style="font-size:12px;position:absolute;bottom:0;right:20px;height:20px;text-align:right;">

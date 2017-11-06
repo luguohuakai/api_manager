@@ -22,7 +22,7 @@
             <div style="height:50px;font-size:30px;line-height:50px;">
                 <a class="home" style="color:#000000;text-shadow:1px 0px 1px #666;text-decoration: none" href="<?php echo U()?>">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true" style="width:40px;"></span>
-        <span style="position: relative;top:-3px;">【SP云】API文档<span style="font-size:12px;position:relative;top:-13px;">&nbsp;<?php echo C('version->no')?></span>
+        <span style="position: relative;top:-3px;">【SRUNBOX】API文档<span style="font-size:12px;position:relative;top:-13px;">&nbsp;<?php echo C('version->no')?></span>
                 </a>
                 </span>
             </div>
