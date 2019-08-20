@@ -112,10 +112,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nice_name`, `login_name`, `last_time`, `login_pwd`, `isdel`, `issuper`) VALUES
 (1, 'maoge', 'maoge', 1456875836, '7f0cb946ef1aba5768fa3682c7df048a', 0, 1),
-(2, 'wxd', 'wxd', 1435575693, '2547e73398d848d05fb0022293a3a351', 0, 0),
-(3, 'fcz', 'fcz', 1456851025, 'ba006ba7669bb3b52655be17abaae963', 0, 0),
-(4, 'wy', 'wy', 1435575693, 'dfcc9dca8ed7aa668e1dcc2996455191', 0, 0),
-(5, 'wwx', 'wwx', 1435575693, '483a70a0179b1c6be6a9e83e22615358', 0, 0);
+(5, 'srun', '深澜软件', 1435575693, 'e10adc3949ba59abbe56e057f20f883e', 0, 0);
 
 --
 -- Indexes for dumped tables

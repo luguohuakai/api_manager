@@ -35,7 +35,7 @@
             )values (
             '{$aid}','{$num}','{$name}','{$des}','{$url}',
             '{$type}','{$parameter}','{$re}','{$lasttime}',
-            '{$lastuid}','{$isdel}','{$memo}','99999'
+            '{$lastuid}','{$isdel}','{$memo}','0'
             )";
             $re = insert($sql);
             if($re){

@@ -20,7 +20,9 @@
                 <?php if(is_supper()){?>
                 <!--只有超级管理员才可以对分类进行操作-->
                 <div style="float:right;margin-right:16px;">
-                    &nbsp;<button class="btn btn-danger btn-xs" name="op" value="delete" onclick="javascript:return confirm('您确认要删除吗?')">delete</button>
+                    &nbsp;<button class="btn btn-danger btn-xs" name="op" value="delete"
+                                  onclick="return confirm('您确认要删除吗?')">delete
+                    </button>
                     &nbsp;<button class="btn btn-info btn-xs" name="op" value="edit">edit</button>
                 </div>
                 <br>
@@ -44,7 +46,7 @@
         <?php } ?>
     </form>
 <?php } else{
-    $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by ord desc,id desc";
+    $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by ord desc,lasttime";
     $list = select($sql);?>
     <div class="form-group">
         <input type="text" class="form-control" id="searchapi" placeholder="search here" onkeyup="search('api',this)">
@@ -83,7 +85,7 @@
             if($find != ''){
                 $(".menu").hide();
                 //找到符合关键字的对象
-                var $keywordobj = $(".keyword:contains('"+$find+"')")
+                var $keywordobj = $(".keyword:contains('" + $find + "')");
                 $keywordobj.each(function(i) {
                     var menu_id = $($keywordobj[i]).attr('id');
                     $("#info_"+menu_id).show();
@@ -96,7 +98,7 @@
                 $(".menu").hide();//左侧导航菜单隐藏
                 $(".info_api").hide();
                 //找到符合关键字的对象
-                var $keywordobj = $(".keyword:contains('"+$find+"')")
+                var $keywordobj = $(".keyword:contains('" + $find + "')");
                 $keywordobj.each(function(i) {
                     var menu_id = $($keywordobj[i]).attr('id');
                     $("#api_"+menu_id).show();//左侧导航菜单 部份 隐藏
@@ -120,9 +122,9 @@
         var navbarButton = '<div onclick="navbar(this)" ' +
             'style="text-align:center;line-height:120px;border-bottom-right-radius:5px;cursor:'+cursor+';border-top-right-radius:5px;width:14px;height:120px;background: rgba(91,192,222, 0.8);position:fixed;left:0;top:260px;color:#fff;box-shadow: 0px 0px 0px 1px #cccccc;">' +
             status_flg +
-            '</div>'
+            '</div>';
         $('body').append(navbarButton);
-    }
+    };
     // 全屏和normal
     function navbar(obj){
         if($('#mainwindow').hasClass('col-md-9')){
