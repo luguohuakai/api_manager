@@ -39,7 +39,7 @@
             )";
             $re = insert($sql);
             if($re){
-                go(U(array('act'=>'api','tag'=>$_GET['tag'])));
+                go(U(array('act' => 'api', 'tag' => $_GET['tag'], 'op' => 'add', 'msg' => '<strong style="color: green">' . $name . '</strong> 添加成功,你可以继续添加 :-)')));
             }else{
                 echo '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 添加失败</div>';
             }
@@ -188,7 +188,14 @@ function DeleteCookie(name) {
 }
 </script>
 <!--js自动保存到cookie  end-->
-
+    <?php if (isset($_GET['msg'])): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            <?= $_GET['msg']; ?>
+        </div>
+    <?php endif; ?>
     <div style="border:1px solid #ddd">
         <div style="background:#f5f5f5;padding:20px;position:relative">
             <h4>添加接口<span style="font-size:12px;padding-left:20px;color:#a94442">注:"此色"边框为必填项</span></h4>
@@ -218,8 +225,8 @@ function DeleteCookie(name) {
                     </div>
                     <div class="form-group" required="required">
                         <select class="form-control" name="type">
-                            <option value="POST">POST</option>
                             <option value="GET">GET</option>
+                            <option value="POST">POST</option>
                             <option value="DELETE">DELETE</option>
                             <option value="PUT">PUT</option>
                             <option value="HEAD">HEAD</option>
@@ -445,11 +452,12 @@ function DeleteCookie(name) {
                 </div>
                 <h4 class="textshadow"><?php echo $v['name']?></h4>
                 <p>
-                    <b>编号&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color:red"><?php echo $v['num']?></span></b>
+                    <!--                    <b>编号&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color:red">-->
+                    <?php //echo $v['num']?><!--</span></b>-->
                 </p>
                 <div>
                     <?php
-                        $color = 'green';
+                    $color = 'yellow';
                         if($v['type']=='POST'){
                             $color = 'red';
                         }
@@ -462,36 +470,37 @@ function DeleteCookie(name) {
                 <?php echo $v['des']?>
             </div>
             <?php } ?>
-            <div style="background:#ffffff;padding:20px;">
-                <h5 class="textshadow" >请求参数</h5>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th class="col-md-3">参数名</th>
-                        <th class="col-md-2">参数类型</th>
-						<th class="col-md-2">必传</th>
-                        <th class="col-md-2">默认值</th>
-                        <th class="col-md-5">描述</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        $parameter = unserialize($v['parameter']);
-                        $pnum = count($parameter['name']);
-                    ?>
-                    <?php for( $i=0; $i<$pnum; $i++ ) {?>
-                    <tr>
-                        <td><?php echo $parameter['name'][$i]?></td>
-						<td><?php echo $parameter['paramType'][$i]?></td>
-                        <td><?php if($parameter['type'][$i]=='Y'){echo '<span style="color:red">Y<span>';}else{echo '<span style="color:green">N<span>';}?></td>
-                        <td><?php echo $parameter['default'][$i]?></td>
-                        <td><?php echo $parameter['des'][$i]?></td>
-                    </tr>
-                    <?php } ?>
-
-                    </tbody>
-                </table>
-            </div>
+            <?php
+            $parameter = unserialize($v['parameter']);
+            $pnum = count($parameter['name']);
+            ?>
+            <?php if ($pnum): ?>
+                <div style="background:#ffffff;padding:20px;">
+                    <!--                <h5 class="textshadow" >请求参数</h5>-->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="col-md-3">请求参数</th>
+                            <th class="col-md-2">参数类型</th>
+                            <th class="col-md-2">必传</th>
+                            <th class="col-md-2">默认值</th>
+                            <th class="col-md-5">描述</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php for($i=0; $i<$pnum; $i++ ) {?>
+                            <tr>
+                                <td><?php echo $parameter['name'][$i]?></td>
+                                <td><?php echo $parameter['paramType'][$i]?></td>
+                                <td><?php if($parameter['type'][$i]=='Y'){echo '<span style="color:red">Y<span>';}else{echo '<span style="color:green">N<span>';}?></td>
+                                <td><?php echo $parameter['default'][$i]?></td>
+                                <td><?php echo $parameter['des'][$i]?></td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
             <?php if(!empty($v['re'])){ ?>
             <div style="background:#ffffff;padding:20px;">
                 <h5 class="textshadow" >返回值</h5>
