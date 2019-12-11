@@ -6,6 +6,14 @@
     <div class="form-group">
         <input type="text" class="form-control" id="searchcate" onkeyup="search('cate',this)" placeholder="search here">
     </div>
+    <form action="?act=cate" method="post">
+        <?php if (is_supper()) { ?>
+            <!--只有超级管理员才可以添加分类-->
+            <div style="float:right;margin-right:20px;">
+                <button class="btn btn-success" name="op" value="add">新建分类</button>
+            </div>
+        <?php } ?>
+    </form>
     <div class="list">
         <ul class="list-unstyled">
             <?php foreach($list as $v){?>
@@ -36,21 +44,21 @@
             <?php } ?>
         </ul>
     </div>
-
-    <form action="?act=cate" method="post">
-        <?php if(is_supper()){?>
-        <!--只有超级管理员才可以添加分类-->
-        <div style="float:right;margin-right:20px;">
-            <button class="btn btn-success" name="op" value="add">新建分类</button>
-        </div>
-        <?php } ?>
-    </form>
 <?php } else{
     $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by lasttime desc,ord desc";
     $list = select($sql);?>
     <div class="form-group">
         <input type="text" class="form-control" id="searchapi" placeholder="search here" onkeyup="search('api',this)">
     </div>
+    <form action="?act=api&tag=<?php echo $_GET['tag']; ?>&op=add" method="post">
+        <?php if (is_supper()) { ?>
+            <!--只有超级管理员才可以添加接口-->
+            <div style="float:right;margin-right:20px;">
+                <input type="hidden" value="<?php echo $_GET['tag'] ?>" name="aid">
+                <button class="btn btn-success">新建接口</button>
+            </div>
+        <?php } ?>
+    </form>
     <div class="list">
         <ul class="list-unstyled" style="padding:10px">
             <?php foreach($list as $v){ ?>
@@ -71,15 +79,6 @@
             <?php } ?>
         </ul>
     </div>
-    <form action="?act=api&tag=<?php echo $_GET['tag'];?>&op=add" method="post">
-        <?php if(is_supper()){?>
-            <!--只有超级管理员才可以添加接口-->
-            <div style="float:right;margin-right:20px;">
-                <input type="hidden" value="<?php echo $_GET['tag']?>" name="aid">
-                <button class="btn btn-success">新建接口</button>
-            </div>
-        <?php } ?>
-    </form>
 <?php } ?>
 <!--jquery模糊查询start-->
 <script>
