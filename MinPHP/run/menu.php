@@ -46,7 +46,7 @@
         <?php } ?>
     </form>
 <?php } else{
-    $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by ord desc,lasttime";
+    $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by lasttime desc,ord desc";
     $list = select($sql);?>
     <div class="form-group">
         <input type="text" class="form-control" id="searchapi" placeholder="search here" onkeyup="search('api',this)">
@@ -58,6 +58,11 @@
                 <a href="<?php echo U(array('act'=>'api','tag'=>$_GET['tag'])); ?>#info_api_<?php echo md5($v['id']) ?>" id="<?php echo 'menu_'.md5($v['id'])?>">
                     <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                     <?php echo $v['name'] ?>
+                    <?php
+                    if (time() - $v['lasttime'] < 7 * 24 * 60 * 60) {
+                        echo '<span style="color: red; font-size: 10px;">' . humanity_time($v['lasttime']) . '</span>';
+                    }
+                    ?>
                 </a>
             </li>
             <!--接口关键字(js通过此关健字进行模糊查找)start-->

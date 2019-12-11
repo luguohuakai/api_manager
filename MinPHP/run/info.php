@@ -100,7 +100,7 @@
         left join user
         on api.lastuid=user.id
         where aid='{$_GET['tag']}' and api.isdel=0
-        order by ord desc,api.id desc";
+        order by api.lasttime desc,ord desc";
         $list = select($sql);
    }
 ?>
@@ -441,7 +441,8 @@ function DeleteCookie(name) {
     <!--接口详细列表start-->
     <?php if(count($list)){ ?>
         <?php foreach($list as $v){ ?>
-        <div class="info_api" style="border:1px solid #ddd;margin-bottom:20px;" id="info_api_<?php echo md5($v['id'])?>">
+            <div class="info_api" style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);margin-bottom:20px;"
+                 id="info_api_<?php echo md5($v['id']) ?>">
             <div style="background:#f5f5f5;padding:20px;position:relative">
                 <div class="textshadow" style="position: absolute;right:0;top:4px;right:8px;">
                     最后修改者: <?php echo $v['login_name']?> &nbsp;<?php echo date('Y-m-d H:i:s',$v['lasttime'])?>&nbsp;
