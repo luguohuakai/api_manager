@@ -413,7 +413,7 @@ function DeleteCookie(name) {
                 '<td class="form-group has-error" >' +
                     '<input type="text" class="form-control has-error" name="p[name][]" placeholder="参数名" required="required"></td>' +
 				'<td class="form-group has-error">' +
-                    '<input type="text" class="form-control" name="p[paramType][]" placeholder="参数类型" required="required">' +
+                '<input type="text" class="form-control" name="p[paramType][]" placeholder="参数类型" value="string" required="required">' +
                 '</td>' +
                 '<td>' +
                     '<select class="form-control" name="p[type][]">' +
