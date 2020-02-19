@@ -62,9 +62,25 @@
     <div class="list">
         <ul class="list-unstyled" style="padding:10px">
             <?php foreach($list as $v){ ?>
-            <li class="menu" id="api_<?php echo md5($v['id']);?>" >
-                <a href="<?php echo U(array('act'=>'api','tag'=>$_GET['tag'])); ?>#info_api_<?php echo md5($v['id']) ?>" id="<?php echo 'menu_'.md5($v['id'])?>">
-                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                <li class="menu" style="color: <?= $v['status'] == 3 ? 'lightgrey' : '' ?>"
+                    id="api_<?php echo md5($v['id']); ?>">
+                    <a style="color: <?= $v['status'] == 3 ? 'lightgrey' : '' ?>"
+                       href="<?php echo U(array('act' => 'api', 'tag' => $_GET['tag'])); ?>#info_api_<?php echo md5($v['id']) ?>"
+                       id="<?php echo 'menu_' . md5($v['id']) ?>">
+                    <span id="span_<?= md5($v['id']) ?>">
+                    <?php if ($v['status'] == 1): ?>
+                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    <?php endif; ?>
+                        <?php if ($v['status'] == 2): ?>
+                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                        <?php endif; ?>
+                        <?php if ($v['status'] == 3): ?>
+                            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                        <?php endif; ?>
+                        <?php if ($v['status'] == 4): ?>
+                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                        <?php endif; ?>
+                    </span>
                     <?php echo $v['name'] ?>
                     <?php
                     if (time() - $v['lasttime'] < 7 * 24 * 60 * 60) {

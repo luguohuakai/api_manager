@@ -95,7 +95,7 @@
        }
    //此分类下的接口列表
    }else{
-        $sql = "select api.id,aid,num,url,name,des,parameter,memo,re,lasttime,lastuid,type,login_name
+       $sql = "select api.id,aid,num,url,name,des,parameter,memo,re,lasttime,lastuid,type,login_name,api.status,api.status_time
         from api
         left join user
         on api.lastuid=user.id
@@ -110,7 +110,6 @@
 <!--js自动保存到cookie  star-->
     <script src="./MinPHP/res/jquery.min.js"></script>
     <script>
-    	
     	$(function(){
     		
 					$("textarea[name='des'],textarea[name='re'],textarea[name='memo']").keydown(function () {
@@ -451,7 +450,29 @@ function DeleteCookie(name) {
                     <button class="btn btn-info btn-xs " onclick="editApi('<?php echo U(array('act'=>'api','op'=>'edit','id'=>$v['id'],'tag'=>$_GET['tag']))?>')">edit</button>
                     <?php } ?>
                 </div>
-                <h4 class="textshadow"><?php echo $v['name']?></h4>
+                <div>
+                    <h4 class="textshadow"><?php echo $v['name'] ?></h4>
+                    <div class="textshadow" style="position: absolute;right:0;top:34px;right:14px;">
+                        <label for="is_invoked<?= $v['id'] ?>">
+                            <input type="checkbox"
+                                   onclick="changeInvokeStatus(this,<?= $v['id'] ?>,'<?= md5($v['id']) ?>')" <?= $v['status'] == 2 ? 'checked' : '' ?>
+                                   name="is_invoked" id="is_invoked<?= $v['id'] ?>"> 朕已阅
+                        </label>
+                        <?php if (is_supper()): ?>
+                            <label for="is_abandoned<?= $v['id'] ?>">
+                                <input type="checkbox"
+                                       onclick="changeAbandonStatus(this,<?= $v['id'] ?>)" <?= $v['status'] == 3 ? 'checked' : '' ?>
+                                       name="is_abandoned" id="is_abandoned<?= $v['id'] ?>"> 废弃
+                            </label>
+                        <?php endif; ?>
+                        <?php if ($v['status'] == 3): ?>
+                            <span>已废弃</span>
+                        <?php endif; ?>
+                        <?php if ($v['status'] == 4): ?>
+                            <span>已更新</span>
+                        <?php endif; ?>
+                    </div>
+                </div>
                 <p>
                     <!--                    <b>编号&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color:red">-->
                     <?php //echo $v['num']?><!--</span></b>-->
@@ -528,7 +549,7 @@ function DeleteCookie(name) {
         </div>
     <?php }?>
     <script>
-        //删除某个接口
+        // 删除某个接口
         var $url = '<?php echo U(array('act'=>'ajax','op'=>'apiDelete'))?>';
         function deleteApi(apiId,divId){
             if(confirm('是否确认删除此接口?')){
@@ -539,6 +560,28 @@ function DeleteCookie(name) {
                     }
                 })
             }
+        }
+
+        // 更新接口状态
+        var $url2 = '<?php echo U(array('act' => 'ajax', 'op' => 'changeInvokeStatus'))?>';
+
+        function changeInvokeStatus(obj, id, span_id) {
+            $.post($url2, {id: id}, function (data) {
+                if (data != '0') {
+                    $('#span_' + span_id).html(data);
+                }
+            })
+        }
+
+        // 更新接口状态
+        var $url3 = '<?php echo U(array('act' => 'ajax', 'op' => 'changeAbandonStatus'))?>';
+
+        function changeAbandonStatus(obj, id) {
+            $.post($url3, {id: id}, function (data) {
+                if (data == '1') {
+                    $(obj).append('成功')
+                }
+            })
         }
         //编辑某个接口
         function editApi(gourl){
