@@ -78,7 +78,7 @@
                             <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
                         <?php endif; ?>
                         <?php if ($v['status'] == 4): ?>
-                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
                         <?php endif; ?>
                     </span>
                     <?php echo $v['name'] ?>

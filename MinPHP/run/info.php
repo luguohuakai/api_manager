@@ -64,7 +64,7 @@
 
            $sql ="update api set num='{$num}',name='{$name}',
            des='{$des}',url='{$url}',type='{$type}',
-           parameter='{$parameter}',re='{$re}',lasttime='{$lasttime}',lastuid='{$lastuid}',memo='{$memo}'
+           parameter='{$parameter}',re='{$re}',lasttime='{$lasttime}',lastuid='{$lastuid}',memo='{$memo}',status=4
            where id = '{$id}'";
            $re = update($sql);
            if($re){
@@ -579,7 +579,7 @@ function DeleteCookie(name) {
         function changeAbandonStatus(obj, id) {
             $.post($url3, {id: id}, function (data) {
                 if (data == '1') {
-                    $(obj).append('成功')
+                    //
                 }
             })
         }
