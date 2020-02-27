@@ -97,4 +97,5 @@ CREATE TABLE `user` (
 --
 INSERT INTO `user` (`id`, `nice_name`, `login_name`, `last_time`, `login_pwd`, `isdel`, `issuper`) VALUES
 (1, 'maoge', 'maoge', 1456875836, '7f0cb946ef1aba5768fa3682c7df048a', 0, 1),
-(5, 'srun', '深澜软件', 1435575693, 'e10adc3949ba59abbe56e057f20f883e', 0, 0);
+(2, 'srun', '深澜软件', 1435575693, 'e10adc3949ba59abbe56e057f20f883e', 0, 1);
+(3, 'guest', '游客', 1435575693, 'e10adc3949ba59abbe56e057f20f883e', 0, 0);
