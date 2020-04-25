@@ -1,4 +1,4 @@
-<?php defined('API') or exit('http://gwalker.cn');?>
+<?php defined('API') or exit('https://srun.com'); ?>
 <!--接口分类管理-->
 <?php
 if(!is_supper()){die('只有超级管理员才可对分类进行操作');}
@@ -12,11 +12,12 @@ switch($op){
     case 'add':
         if($type  == 'do'){
             $_VAL = I($_POST);
+            $subject_id = P('subject_id') ?: 0;
             $cname = $_VAL['cname'];
             $cdesc = $_VAL['cdesc'];
             $time = time();
             if(!empty($cname) && !empty($cdesc)){
-                $sql = "insert into cate (cname,cdesc,addtime) values('{$cname}','{$cdesc}','{$time}')";
+                $sql = "insert into cate (cname,cdesc,addtime,`subject_id`) values('{$cname}','{$cdesc}','{$time}','{$subject_id}')";
                 $re = insert($sql);
                 if($re){
                     go(U());
@@ -42,8 +43,9 @@ switch($op){
     //编辑
     case 'edit';
         $_VAL = I($_POST);
+        $subject_id = P('subject_id') ?: 0;
         if($type == 'do'){
-            $sql = "update cate set cname='{$_VAL['cname']}',cdesc='{$_VAL['cdesc']}' where aid='{$_VAL['aid']}'";
+            $sql = "update cate set cname='{$_VAL['cname']}',cdesc='{$_VAL['cdesc']}',`subject_id`='{$subject_id}' where aid='{$_VAL['aid']}'";
             $re = update($sql);
             if($re !== false){
                 go(U());
@@ -57,6 +59,9 @@ switch($op){
         }
     break;
 }
+
+// 项目列表
+$list = select("select * from subject order by updated_at desc limit 100");
 ?>
 <?php if($op == 'add'){ ?>
     <div style="border:1px solid #ddd">
@@ -70,7 +75,17 @@ switch($op){
                     <div class="form-group">
                         <input type="text" class="form-control" name="cdesc" placeholder="描述">
                     </div>
-                    <button class="btn btn-success" name="op" value="add">Submit</button>
+                    <?php if ($list): ?>
+                        <div class="form-group">
+                            <select class="form-control" name="subject_id" id="">
+                                <option value="0">请选择项目</option>
+                                <?php foreach ($list as $item): ?>
+                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php endif; ?>
+                    <button class="btn btn-success" name="op" value="add">提交</button>
                 </form>
             </div>
         </div>
@@ -88,7 +103,17 @@ switch($op){
                     <div class="form-group">
                         <input type="text" class="form-control" name="cdesc" placeholder="描述" value="<?php echo $info['cdesc'] ?>">
                     </div>
-                    <button class="btn btn-success" name="op" value="edit">Submit</button>
+                    <?php if ($list): ?>
+                        <div class="form-group">
+                            <select class="form-control" name="subject_id" id="">
+                                <option value="0">请选择项目</option>
+                                <?php foreach ($list as $item): ?>
+                                    <option value="<?= $item['id'] ?>" <?php if ($info['subject_id'] == $item['id']) echo 'selected' ?>><?= $item['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php endif; ?>
+                    <button class="btn btn-success" name="op" value="edit">提交</button>
                 </form>
             </div>
         </div>

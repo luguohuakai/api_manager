@@ -1,11 +1,7 @@
 <?php
-defined('API') or exit('http://gwalker.cn');
-if (!is_supper()) {
-//    die('只有超级管理员才可进行ajax操作');
-}
-if (!is_login()) {
-    die('请登录');
-}
+defined('API') or exit('https://srun.com');
+//if (!is_supper()) die('只有超级管理员才可进行ajax操作');
+if (!is_login()) die('请登录');
 //得到ajax操作
 $op = I($_GET['op']);
 //执行ajax操作

@@ -1,7 +1,12 @@
-<?php defined('API') or exit('http://gwalker.cn');?>
+<?php defined('API') or exit('https://srun.com'); ?>
 <!--导航-->
 <?php if($act != 'api' && $act != 'sort'){
-    $list = select('select * from cate where isdel=0 order by addtime desc');
+    if ($act === 'subject') {
+        $sql1 = "select * from cate where isdel=0 and subject_id={$biz_id} order by addtime desc";
+    } else {
+        $sql1 = 'select * from cate where isdel=0 order by addtime desc';
+    }
+    $list = select($sql1);
 ?>
     <div class="form-group">
         <input type="text" class="form-control" id="searchcate" onkeyup="search('cate',this)" placeholder="search here">
@@ -29,9 +34,9 @@
                 <!--只有超级管理员才可以对分类进行操作-->
                 <div style="float:right;margin-right:16px;">
                     &nbsp;<button class="btn btn-danger btn-xs" name="op" value="delete"
-                                  onclick="return confirm('您确认要删除吗?')">delete
+                                  onclick="return confirm('您确认要删除吗?')">删除
                     </button>
-                    &nbsp;<button class="btn btn-info btn-xs" name="op" value="edit">edit</button>
+                    &nbsp;<button class="btn btn-info btn-xs" name="op" value="edit">编辑</button>
                 </div>
                 <br>
                 <?php } ?>

@@ -1,6 +1,6 @@
 <!--修改密码start-->
 <?php
-    defined('API') or exit('http://gwalker.cn');
+defined('API') or exit('https://srun.com');
     if(!is_login()){die('请登录');}
 ?>
 <?php
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" name="new_pwd2" placeholder="确认新密码" required="required">
                 </div>
-                <button class="btn btn-success">Submit</button>
+                <button class="btn btn-success">提交</button>
             </form>
         </div>
     </div>

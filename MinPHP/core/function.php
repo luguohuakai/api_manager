@@ -1,4 +1,4 @@
-<?php defined('API') or exit('http://gwalker.cn');?>
+<?php defined('API') or exit('https://srun.com'); ?>
 <?php
     /**
      * @dec 得到配置文件的配置项 & 设置某配置项
@@ -169,6 +169,26 @@
         die($gourl) ;
     }
 
+// 提示
+function alert($msg, $type = 'error')
+{
+    switch ($type) {
+        case 'error':
+            return "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+        case 'success':
+            return "<div class='alert alert-success' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+        case 'warning':
+            return "<div class='alert alert-warning' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+        case 'dismissable':
+            return "<div class='alert alert-dismissable' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+        case 'link':
+            return "<div class='alert alert-link' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+        case 'info':
+        default:
+            return "<div class='alert alert-info' role='alert'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>{$msg}</div>";
+    }
+}
+
     //生成url
     function U($array = null){
         if(is_null($array)){
@@ -229,3 +249,13 @@
         header("Content-Transfer-Encoding: binary" );
         die($content);
     }
+
+function P($val)
+{
+    return isset($_POST[$val]) ? $_POST[$val] : null;
+}
+
+function G($val)
+{
+    return isset($_GET[$val]) ? $_GET[$val] : null;
+}

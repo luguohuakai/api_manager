@@ -1,4 +1,4 @@
-<?php defined('API') or exit('http://gwalker.cn');?>
+<?php defined('API') or exit('https://srun.com'); ?>
 <!DOCTYPE html>
 <html lang="zh-CN" style="height:100%">
 <head>
@@ -65,7 +65,8 @@
         <div id="navbar" class="col-md-3 beautiful-scrollbar"
              style="position:relative;background:#f5f5f5;padding:10px;height:100%;border-right:#ddd 1px solid;overflow-y:auto;<?php if ($_COOKIE[C('cookie->navbar')] == 1) { ?>display:none<?php } ?>">
             <div style="height:50px;font-size:30px;line-height:50px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                <a class="home" style="color:#000000;text-shadow:1px 0px 1px #666;text-decoration: none" href="<?php echo U()?>">
+                <a class="home" style="color:#000;text-shadow:1px 0 1px #666;text-decoration: none"
+                   href="<?php echo U() ?>">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true" style="width:40px;"></span>
                     <span style="position: relative;top:-3px;">【SRUN】API文档<span
                                 style="font-size:12px;position:relative;top:-13px;">&nbsp;<?php echo C('version->no') ?></span>
@@ -87,7 +88,7 @@
         <span id="topbutton" style="float:right">
             <?php
             if(is_login()){
-                echo '欢迎您：' . session('nice_name') . '&nbsp;&nbsp;';
+                echo session('nice_name') . '&nbsp;&nbsp;';
                 //如果是接口详情页的话,就显示【导出】按钮 与 【排序】按钮
                 if($_GET['act']=='api' && isset($_GET['tag']) && !isset($_GET['op'])){
                     echo '<a href="?act=sort&tag='.$_GET['tag'].'">排序&nbsp;&nbsp;</a>';

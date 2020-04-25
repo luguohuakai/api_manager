@@ -49,7 +49,7 @@
                 <?php } ?>
                 </tbody>
             </table>
-            <button class="btn btn-success">Submit</button>
+            <button class="btn btn-success">提交</button>
         </form>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <!--登录与退出start-->
-<?php defined('API') or exit('http://gwalker.cn');?>
+<?php defined('API') or exit('https://srun.com'); ?>
 <?php
     $type= I($_GET['type']);
     //登录
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" name="pwd" placeholder="密码" required="required">
                 </div>
-                <button class="btn btn-success">Submit</button>
+                <button class="btn btn-success">提交</button>
             </form>
         </div>
     </div>

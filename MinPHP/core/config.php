@@ -1,5 +1,5 @@
 <?php
-defined('API') or exit('http://gwalker.cn');
+defined('API') or exit('https://srun.com');
 return array(
     //数据库连接配置
     'db'=>array(

@@ -108,7 +108,6 @@
     <!--添加接口 start-->
     
 <!--js自动保存到cookie  star-->
-    <script src="./MinPHP/res/jquery.min.js"></script>
     <script>
     	$(function(){
     		
@@ -122,7 +121,7 @@
     		
     	});
 		</script>
-<script>	
+    <script>
 /**
 *
 *自动保存文字到cookie中
@@ -275,7 +274,7 @@ function DeleteCookie(name) {
                         <h5>备注</h5>
                         <textarea name="memo" rows="1" class="form-control" placeholder="备注"></textarea>
                     </div>
-                    <button class="btn btn-success">Submit</button>
+                    <button class="btn btn-success">提交</button>
                 </form>
             </div>
         </div>
@@ -401,7 +400,7 @@ function DeleteCookie(name) {
                         <h5>备注</h5>
                         <textarea name="memo" rows="1" class="form-control" placeholder="备注"><?php echo $info['memo']?></textarea>
                     </div>
-                    <button class="btn btn-success">Submit</button>
+                    <button class="btn btn-success">提交</button>
                 </form>
             </div>
         </div>
@@ -446,8 +445,13 @@ function DeleteCookie(name) {
                 <div class="textshadow" style="position: absolute;right:0;top:4px;right:8px;">
                     最后修改者: <?php echo $v['login_name']?> &nbsp;<?php echo date('Y-m-d H:i:s',$v['lasttime'])?>&nbsp;
                     <?php if(is_supper()){?>
-                    <button class="btn btn-danger btn-xs " onclick="deleteApi(<?php echo $v['id']?>,'<?php echo md5($v['id'])?>')">delete</button>&nbsp;
-                    <button class="btn btn-info btn-xs " onclick="editApi('<?php echo U(array('act'=>'api','op'=>'edit','id'=>$v['id'],'tag'=>$_GET['tag']))?>')">edit</button>
+                        <button class="btn btn-danger btn-xs "
+                                onclick="deleteApi(<?php echo $v['id'] ?>,'<?php echo md5($v['id']) ?>')">删除
+                        </button>&nbsp;
+                        <button class="btn btn-info btn-xs "
+                                onclick="editApi('<?php echo U(array('act' => 'api', 'op' => 'edit', 'id' => $v['id'], 'tag' => $_GET['tag'])) ?>')">
+                            编辑
+                        </button>
                     <?php } ?>
                 </div>
                 <div>
@@ -456,7 +460,7 @@ function DeleteCookie(name) {
                         <label for="is_invoked<?= $v['id'] ?>">
                             <input type="checkbox"
                                    onclick="changeInvokeStatus(this,<?= $v['id'] ?>,'<?= md5($v['id']) ?>')" <?= $v['status'] == 2 ? 'checked' : '' ?>
-                                   name="is_invoked" id="is_invoked<?= $v['id'] ?>"> 朕已阅
+                                   name="is_invoked" id="is_invoked<?= $v['id'] ?>"> 标记为已读
                         </label>
                         <?php if (is_supper()): ?>
                             <label for="is_abandoned<?= $v['id'] ?>">
@@ -484,12 +488,17 @@ function DeleteCookie(name) {
                             $color = 'red';
                         }
                     ?>
-                    <kbd style="color:<?php echo $color?>"><?php echo $v['type']?></kbd> - <kbd><?php echo $v['url']?></kbd>
+                    <kbd style="color:<?php echo $color ?>"><?php echo $v['type'] ?></kbd> - <kbd
+                            id="c_<?= $v['id'] ?>"><?= $v['url'] ?></kbd>
+                    <button class="btn btn-xs" data-clipboard-target="#c_<?= $v['id'] ?>">复制 <span
+                                class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
                 </div>
             </div>
             <?php if(!empty($v['des'])){ ?>
             <div class="info">
-                <?php echo $v['des']?>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                &nbsp;
+                <?= $v['des'] ?>
             </div>
             <?php } ?>
             <?php
@@ -606,3 +615,8 @@ function DeleteCookie(name) {
     </script>
 <?php } ?>
 <!--接口详情列表与接口管理end-->
+<script src="./MinPHP/res/jquery.min.js"></script>
+<script src="./MinPHP/res/clipboard.js"></script>
+<script type="text/javascript">
+    new ClipboardJS('.btn');
+</script>

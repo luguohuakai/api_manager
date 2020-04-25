@@ -1,5 +1,5 @@
 <?php
-    defined('API') or exit('http://gwalker.cn');
+defined('API') or exit('https://srun.com');
     if(!is_supper()){die('只有超级管理员才可进行导出操作');}
 if(!is_login()){die('请登录');}
     define('BASEURL',baseUrl());
