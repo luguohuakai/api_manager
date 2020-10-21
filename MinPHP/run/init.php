@@ -1,19 +1,19 @@
 <?php
-    //项目所有文件的入口文件
-    //防跳墙常量
+//项目所有文件的入口文件
+//防跳墙常量
 define('API', 'https://srun.com');
-    //开启session
-    session_start();
+//开启session
+session_start();
 //关闭错误输出
-    error_reporting(0);
-    //设置页面字符编码
-    header("Content-type: text/html; charset=utf-8");
-    //设置时区
-    date_default_timezone_set('Asia/Shanghai');
-    //加载公用函数
-    include('./MinPHP/core/function.php');
-    //数据库连接初始化
-    M();
+error_reporting(0);
+//设置页面字符编码
+header("Content-type: text/html; charset=utf-8");
+//设置时区
+date_default_timezone_set('Asia/Shanghai');
+//加载公用函数
+include('./MinPHP/core/function.php');
+//数据库连接初始化
+M();
 if (!function_exists('humanity_time')) {
     /**
      * @param int $timestamp 时间戳
@@ -26,7 +26,9 @@ if (!function_exists('humanity_time')) {
         $day = floor($diff / (24 * 60 * 60));
         switch (true) {
             case $diff > 365 * 24 * 60 * 60:
-                return date('Y-m-d H:i:s');
+                return date('Y-m-d', $timestamp);
+            case $diff > 4 * 30 * 24 * 60 * 60:
+                return floor($diff / (30 * 24 * 60 * 60)) . '个月前';
             case $diff > 1 * 60 * 60:
                 if ($day >= 3) {
                     return $day . '天前';

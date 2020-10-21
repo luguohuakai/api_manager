@@ -86,17 +86,20 @@
                             <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
                         <?php endif; ?>
                     </span>
-                    <?php echo $v['name'] ?>
-                    <?php
-                    if (time() - $v['lasttime'] < 7 * 24 * 60 * 60) {
-                        echo '<span style="color: red; font-size: 10px;">' . humanity_time($v['lasttime']) . '</span>';
-                    }
-                    ?>
-                </a>
-            </li>
-            <!--接口关键字(js通过此关健字进行模糊查找)start-->
-            <span class="keyword" id="<?php echo md5($v['id'])?>"><?php echo $v['name'].'<|-|>'.$v['num'].'<|-|>'.$v['des'].'<|-|>'.$v['memo'].'<|-|>'.$v['parameter'].'<|-|>'.$v['url'].'<|-|>'.$v['type'].'<|-|>'.strtolower($v['type']);?></span>
-            <!--接口关键字(js通过此关健字进行模糊查找)end-->
+                        <?php echo $v['name'] ?>
+                        <?php
+                        if (time() - $v['lasttime'] < 30 * 24 * 60 * 60) {
+                            echo '<sup style="color: red; font-size: 10px;">' . humanity_time($v['lasttime']) . '</sup>';
+                        } else {
+                            echo '<sub style="color: #ccc">' . humanity_time($v['lasttime']) . '</sub>';
+                        }
+                        ?>
+                    </a>
+                </li>
+                <!--接口关键字(js通过此关健字进行模糊查找)start-->
+                <span class="keyword"
+                      id="<?php echo md5($v['id']) ?>"><?php echo $v['name'] . '<|-|>' . $v['num'] . '<|-|>' . $v['des'] . '<|-|>' . $v['memo'] . '<|-|>' . $v['parameter'] . '<|-|>' . $v['url'] . '<|-|>' . $v['type'] . '<|-|>' . strtolower($v['type']); ?></span>
+                <!--接口关键字(js通过此关健字进行模糊查找)end-->
             <?php } ?>
         </ul>
     </div>

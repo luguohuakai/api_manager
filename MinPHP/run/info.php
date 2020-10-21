@@ -1,6 +1,8 @@
 <?php
     defined('API') or exit();
-    if(!is_login()){die('请登录');}
+    if (!is_login() && $_GET['mark'] !== 'export') {
+        die('请登录');
+    }
 ?>
 <!--接口详情列表与接口管理start-->
 <?php
@@ -106,20 +108,20 @@
 ?>
 <?php if($op == 'add'){ ?>
     <!--添加接口 start-->
-    
-<!--js自动保存到cookie  star-->
+
+    <!--js自动保存到cookie  star-->
     <script>
     	$(function(){
-    		
-					$("textarea[name='des'],textarea[name='re'],textarea[name='memo']").keydown(function () {
+
+            $("textarea[name='des'],textarea[name='re'],textarea[name='memo']").keydown(function () {
 						AutoSave();
 					});
-					
-					$(".btn-success").click(function(){
+
+            $(".btn-success").click(function(){
 						DeleteCookie('apimanage');
 					});
-    		
-    	});
+
+        });
 		</script>
     <script>
 /**
@@ -135,8 +137,8 @@ function AutoSave() {
 	var _value = des + ";"+ re+";"+memo;
 	if (_value==";;"){
 		var LastContent = GetCookie('apimanage');
-		
-		if (LastContent == ";;") return;
+
+        if (LastContent == ";;") return;
 		var text = LastContent.split(";");
 		if (des != text[0] || re!=text[1] || memo!=text[2] ){
 			if (confirm("加载保存的记录")) {

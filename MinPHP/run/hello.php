@@ -23,7 +23,8 @@ $list = select('select * from subject order by updated_at desc limit 100');
 <div style="font-size:18px;">
     <div class="info" style="font-size:14px;">
         <span style="font-size:30px;" class="glyphicon glyphicon-grain" aria-hidden="true"></span>
-        <span style="font-size:16px;">【SRUN】项目<span style="font-size:12px;position:relative;top:-7px;"> v1</span></span>
+        <span style="font-size:16px;">【SRUN】项目<span
+                    style="font-size:12px;position:relative;top:-7px;"> <?= C('version->no') ?></span></span>
         <div class="info" style="margin:10px 34px 10px 34px;">
             <div class="row">
                 <a href="<?= U() ?>">

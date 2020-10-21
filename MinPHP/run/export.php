@@ -1,7 +1,11 @@
 <?php
 defined('API') or exit('https://srun.com');
-    if(!is_supper()){die('只有超级管理员才可进行导出操作');}
-if(!is_login()){die('请登录');}
+    if (!is_supper()) {
+        die('只有超级管理员才可进行导出操作');
+    }
+if (!is_login()) {
+    die('请登录');
+}
     define('BASEURL',baseUrl());
     //接口分类id
     $tag = I($_GET['tag']);
@@ -10,7 +14,7 @@ if(!is_login()){die('请登录');}
     $version = date('YmdHis');
     $filename = $filename['cname'].$version.'.html';
     //要抓取的接口分类url
-    $url = BASEURL.U(array('act'=>'api','tag'=>$tag));
+$url = BASEURL . U(array('act' => 'api', 'tag' => $tag, 'mark' => 'export'));
     // 如果file_get_contents函数不能用就用curl方式获取
     function file_get_contents_fixed($url)
     {
@@ -22,9 +26,9 @@ if(!is_login()){die('请登录');}
             case function_exists('curl_init'):
                 $ch = curl_init();
                 $timeout = 10; // set to zero for no timeout
-                curl_setopt ($ch, CURLOPT_URL,$url);
-                curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
-                curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
                 $res = curl_exec($ch);
                 break;
             default :
@@ -73,9 +77,9 @@ $headhtml=<<<START
 =======================================================================
 github : https://github.com/gongwalker/ApiManager.git
 =======================================================================
-作者 : 路人庚
+作者 : maoge
 =======================================================================
-QQ : 309581329
+QQ : 769245396
 =======================================================================
 -->
 START;

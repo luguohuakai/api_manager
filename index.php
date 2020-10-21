@@ -49,8 +49,19 @@ switch ($act) {
             echo alert('创建/更新失败');
         }
         break;
+    case 'subject':
+        if ($biz_id) {
+            $menu = ' - 欢迎';
+            $file = './MinPHP/run/hello.php';
+            session('subject', json_encode($_GET));
+        }
+        break;
     //首页
     case 'index':
+        session('subject', '');
+        $menu = ' - 欢迎';
+        $file = './MinPHP/run/hello.php';
+        break;
     default :
         $menu = ' - 欢迎';
         $file = './MinPHP/run/hello.php';
