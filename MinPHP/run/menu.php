@@ -74,10 +74,12 @@
                        id="<?php echo 'menu_' . md5($v['id']) ?>">
                     <span id="span_<?= md5($v['id']) ?>">
                     <?php if ($v['status'] == 1): ?>
-                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        <!--                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>-->
+                        <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
                     <?php endif; ?>
                         <?php if ($v['status'] == 2): ?>
-                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                            <!--                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>-->
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                         <?php endif; ?>
                         <?php if ($v['status'] == 3): ?>
                             <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>

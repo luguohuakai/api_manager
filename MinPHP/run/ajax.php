@@ -19,8 +19,8 @@ function apiDelete()
 // 更改接口调用状态
 function changeInvokeStatus()
 {
-    $status_1 = '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
-    $status_2 = '<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>';
+    $status_1 = '<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>';
+    $status_2 = '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>';
     $id = I($_POST['id']);
     $sql1 = "select status from api where id='{$id}'";
     $rs = select($sql1);
