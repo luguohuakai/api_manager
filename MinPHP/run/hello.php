@@ -84,7 +84,8 @@ $list = select('select * from subject order by updated_at desc limit 100');
     </div>
     <div style="font-size:12px;position:absolute;bottom:0;right:20px;height:20px;text-align:right;">
         <span>
-            路过花开 | qq : 769245396 | <a target="_blank" href="http://www.srun.com/">深澜软件</a>
+            路过花开 | <a target="_blank" href="https://github.com/luguohuakai/api_manager">GitHub</a> | <a target="_blank"
+                                                                                                        href="http://www.srun.com/">深澜软件</a>
         </span>
     </div>
 </div>
