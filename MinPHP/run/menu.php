@@ -9,7 +9,7 @@
     $list = select($sql1);
 ?>
     <div class="form-group">
-        <input type="text" class="form-control" id="searchcate" onkeyup="search('cate',this)" placeholder="search here">
+        <input type="text" class="form-control" id="searchcate" onkeyup="search('cate',this)" placeholder="搜 索">
     </div>
     <form action="?act=cate" method="post">
         <?php if (is_supper()) { ?>
@@ -53,7 +53,7 @@
     $sql = "select * from api where aid = '{$_GET['tag']}' and isdel='0' order by lasttime desc,ord desc";
     $list = select($sql);?>
     <div class="form-group">
-        <input type="text" class="form-control" id="searchapi" placeholder="search here" onkeyup="search('api',this)">
+        <input type="text" class="form-control" id="searchapi" placeholder="查 找" onkeyup="search('api',this)">
     </div>
     <form action="?act=api&tag=<?php echo $_GET['tag']; ?>&op=add" method="post">
         <?php if (is_supper()) { ?>

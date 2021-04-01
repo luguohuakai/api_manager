@@ -28,7 +28,7 @@ $list = select('select * from subject order by updated_at desc limit 100');
         <div class="info" style="margin:10px 34px 10px 34px;">
             <div class="row">
                 <a href="<?= U() ?>">
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-sm-7 col-md-4">
                         <div class="thumbnail">
                             <!--                        <img src="..." alt="......">-->
                             <div class="caption">
@@ -42,7 +42,7 @@ $list = select('select * from subject order by updated_at desc limit 100');
                 </a>
                 <?php if ($list): ?>
                     <?php foreach ($list as $item): ?>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-7 col-md-4">
                             <div class="thumbnail">
                                 <!--                        <img src="..." alt="......">-->
                                 <div class="caption">
@@ -66,7 +66,7 @@ $list = select('select * from subject order by updated_at desc limit 100');
                 <?php if (is_supper()): ?>
                     <a href="javascript:void(0);" data-toggle="modal" data-target="#createModal"
                        data-whatever="@create">
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-7 col-md-4">
                             <div class="thumbnail">
                                 <!--                        <img src="..." alt="......">-->
                                 <div class="caption" style="color: blueviolet">
