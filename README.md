@@ -17,13 +17,13 @@ source /path/to/sources/api.sql;
 * 在 `./MinPHP/core/config.php` 配置文件中修改数据库连接信息
 ```php
 // 数据库连接配置
-'db'=>array(
-  'host' => 'localhost',   //数据库地址
+'db' => [
+    'host' => 'localhost',   //数据库地址
     'dbname' => 'api',   //数据库名
     'user' => 'root',    //帐号
     'passwd' => 'root',    //密码
     'linktype' => 'pdo',    //数据库连接类型 支持mysqli与pdo两种类型
-),
+],
 ```
 * 把项目部署到Apache或Nginx中即可
 
