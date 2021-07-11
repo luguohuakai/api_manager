@@ -225,8 +225,8 @@ function DeleteCookie(name) {
                     </div>
                     <div class="form-group" required="required">
                         <select class="form-control" name="type">
-                            <option value="GET">GET</option>
                             <option value="POST">POST</option>
+                            <option value="GET">GET</option>
                             <option value="DELETE">DELETE</option>
                             <option value="PUT">PUT</option>
                             <option value="HEAD">HEAD</option>
