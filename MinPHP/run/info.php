@@ -228,7 +228,7 @@ if ($op == 'add') {
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="des" rows="1" class="form-control" placeholder="描述"></textarea>
+                        <textarea name="des" rows="1" class="form-control" placeholder="描述">Content-Type: application/json</textarea>
                     </div>
                     <div class="form-group" required="required">
                         <select class="form-control" name="type">
