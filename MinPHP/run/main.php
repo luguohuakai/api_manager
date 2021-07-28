@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>【SRUN】API文档</title>
+    <script src="./MinPHP/res/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./MinPHP/res/favicon.ico">
     <link href="./MinPHP/res/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./MinPHP/res/style.css" rel="stylesheet">

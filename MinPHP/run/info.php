@@ -192,6 +192,15 @@ if ($op == 'add') {
             var cval = GetCookie(name);
             document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
         }
+
+        function changeDesc() {
+            let c = $('#description_api')
+            if (c.val() === "Content-Type: application/x-www-form-urlencoded") {
+                c.val("Content-Type: application/json")
+            } else {
+                c.val("Content-Type: application/x-www-form-urlencoded")
+            }
+        }
     </script>
     <!--js自动保存到cookie  end-->
     <?php if (isset($_GET['msg'])): ?>
@@ -207,7 +216,7 @@ if ($op == 'add') {
             <h4>添加接口<span style="font-size:12px;padding-left:20px;color:#a94442">注:"此色"边框为必填项</span></h4>
             <div style="margin-left:20px;">
                 <form action="?act=api&tag=<?php echo $_GET['tag'] ?>&type=do&op=add" method="post">
-                    <h5>基本信息</h5>
+                    <h5 onclick="changeDesc()">基本信息</h5>
                     <div class="form-group has-error">
                         <div class="input-group">
                             <div class="input-group-addon">接口编号</div>
@@ -228,7 +237,7 @@ if ($op == 'add') {
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="des" rows="1" class="form-control" placeholder="描述">Content-Type: application/json</textarea>
+                        <textarea name="des" rows="1" class="form-control" id="description_api" placeholder="描述">Content-Type: application/json</textarea>
                     </div>
                     <div class="form-group" required="required">
                         <select class="form-control" name="type">
@@ -337,7 +346,7 @@ if ($op == 'add') {
             <h4>修改接口<span style="font-size:12px;padding-left:20px;color:#a94442">注:"此色"边框为必填项</span></h4>
             <div style="margin-left:20px;">
                 <form action="?act=api&tag=<?php echo $_GET['tag'] ?>&type=do&op=edit" method="post">
-                    <h5>基本信息</h5>
+                    <h5 onclick="changeDesc()">基本信息</h5>
                     <div class="form-group has-error">
                         <div class="input-group">
                             <div class="input-group-addon">接口编号</div>
@@ -361,7 +370,7 @@ if ($op == 'add') {
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="des" rows="1" class="form-control"
+                        <textarea name="des" id="description_api" rows="1" class="form-control"
                                   placeholder="描述"><?php echo $info['des'] ?></textarea>
                     </div>
                     <div class="form-group" required="required">
@@ -475,6 +484,15 @@ if ($op == 'add') {
                 '</td>' +
                 '</tr >';
             $('#parameter').append($html);
+        }
+
+        function changeDesc() {
+            let c = $('#description_api')
+            if (c.val() === "Content-Type: application/x-www-form-urlencoded") {
+                c.val("Content-Type: application/json")
+            } else {
+                c.val("Content-Type: application/x-www-form-urlencoded")
+            }
         }
 
         function del(obj) {
