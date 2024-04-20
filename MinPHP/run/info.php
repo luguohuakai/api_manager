@@ -90,7 +90,7 @@ if ($op == 'add') {
     //得到数据的详情信息end
     if (!empty($info)) {
         $info['parameter'] = unserialize($info['parameter']);
-        $count = count($info['parameter']['name']);
+        $count = $info['parameter'] ? count($info['parameter']['name']) : 0;
         $p = array();
         for ($i = 0; $i < $count; $i++) {
             $p[$i]['name'] = $info['parameter']['name'][$i];
@@ -401,7 +401,7 @@ if ($op == 'add') {
                             </thead>
                             <tbody id="parameter">
 
-                            <?php $count = count($info['parameter']['name']); ?>
+                            <?php $count = $info['parameter'] ? count($info['parameter']['name']) : 0; ?>
                             <?php for ($i = 0; $i < $count; $i++) { ?>
                                 <tr>
                                     <td class="form-group has-error">
@@ -560,18 +560,18 @@ if ($op == 'add') {
                                     class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
                     </div>
                 </div>
-                <?php if (!empty($v['des'])) { ?>
+                <?php if (!empty($v['des'])): ?>
                     <div class="info">
                         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                         &nbsp;
                         <?= $v['des'] ?>
                     </div>
-                <?php } ?>
+                <?php endif; ?>
                 <?php
                 $parameter = unserialize($v['parameter']);
-                $pnum = count($parameter['name']);
+                $p_num = $parameter ? count($parameter['name']) : 0;
                 ?>
-                <?php if ($pnum): ?>
+                <?php if ($p_num): ?>
                     <div style="background:#ffffff;padding:20px;">
                         <!--                <h5 class="textshadow" >请求参数</h5>-->
                         <table class="table">
@@ -585,7 +585,7 @@ if ($op == 'add') {
                             </tr>
                             </thead>
                             <tbody>
-                            <?php for ($i = 0; $i < $pnum; $i++) { ?>
+                            <?php for ($i = 0; $i < $p_num; $i++) { ?>
                                 <tr>
                                     <td><?php echo $parameter['name'][$i] ?></td>
                                     <td><?php echo $parameter['paramType'][$i] ?></td>
